@@ -1,11 +1,3 @@
-//Don't redirect - Used for testing
-var developerMode = false;
-
-//Redirect if not on page
-if (!window.location.toString().startsWith("https://chrome.google.com/webstore") && !developerMode ) {
-window.location = "https://chrome.google.com/webstorex"
-}
-
 //Checks for dev mode
 function isPageDev() {
 if (localStorage.getItem("dev")) {
@@ -48,352 +40,359 @@ document.documentElement.innerHTML = `<html><head><link rel="icon" href="data:im
 <div class="items-main">
 <div class="items" id="items">
 <div class="patched">Error: This may have been patched</div>
+<div class="wrongpage">You are not on the correct page.<br>To use Ingot click the button below to redirect and run the bookmarklet again.<div class="item-left-buttons" style="justify-content: center; margin: 20px;">
+<div class="item-left-button" onclick="window.location='https://chrome.google.com/webstorex'">Redirect</div>
+</div></div>
 </div>
 </div>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 * {
-font-family: "Roboto";
+	font-family: "Roboto";
 }
 
 :root {
-    color-scheme: dark;
+	color-scheme: dark;
 }
 
 body {
-background: #202124;
-margin: 0;
-padding: 0;
+	background: #202124;
+	margin: 0;
+	padding: 0;
 }
 
 .nav {
-width: 100%;
-height: 55px;
-background: #292a2d;
-border-bottom: 1px solid rgba(255, 255, 255, .1);
-position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-z-index: 9;
+	width: 100%;
+	height: 55px;
+	background: #292a2d;
+	border-bottom: 1px solid rgba(255, 255, 255, .1);
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 9;
 }
 
 .nav-left {
-    align-items: center;
-    box-sizing: border-box;
-    display: flex;
-    padding-inline-start: calc(12px + 6px);
-    height: 55px;
+	align-items: center;
+	box-sizing: border-box;
+	display: flex;
+	padding-inline-start: calc(12px + 6px);
+	height: 55px;
 }
 
 .nav-right {
-position: absolute;
-    right: 0;
-    left: 0;
-    display: flex;
-    justify-content: flex-end;
+	position: absolute;
+	right: 0;
+	left: 0;
+	display: flex;
+	justify-content: flex-end;
 }
 
 .nav-dev {
-color: rgb(154, 160, 166);
-    font-size: 13px;
-    margin-inline-end: calc(16px + 30px);
-    margin-bottom: 3px;
+	color: rgb(154, 160, 166);
+	font-size: 13px;
+	margin-inline-end: calc(16px + 30px);
+	margin-bottom: 3px;
 }
 
 .item-toggle-dev {
-transform: translateX(-30px);
+	transform: translateX(-30px);
 }
 
 .nav-title {
-    color: rgb(232, 234, 237);
-    font-size: 22px;
-    letter-spacing: .25px;
-    line-height: normal;
-    margin-inline-start: 6px;
-    padding-inline-end: 12px;
-    font-weight: 500;
+	color: rgb(232, 234, 237);
+	font-size: 22px;
+	letter-spacing: .25px;
+	line-height: normal;
+	margin-inline-start: 6px;
+	padding-inline-end: 12px;
+	font-weight: 500;
 }
 
 .items-main {
-min-width: 400px;
-padding: 24px 60px 64px;
-margin-top: 57px;
+	min-width: 400px;
+	padding: 24px 60px 64px;
+	margin-top: 57px;
 }
 
 .items {
-display: grid;
-grid-column-gap: 12px;
-grid-row-gap: 12px;
-grid-template-columns: repeat(auto-fill,400px);
-justify-content: center;
-margin: auto;
-/*max-width: calc(400px * 3 + 12pz * 3);*/
+	display: grid;
+	grid-column-gap: 12px;
+	grid-row-gap: 12px;
+	grid-template-columns: repeat(auto-fill,400px);
+	justify-content: center;
+	margin: auto;
+/*max-width: calc(400px * 3 + 12pz * 3);*/;
 }
 
 .item {
-height: 160px;
-width: 400px;
-background: #292a2d;
-border-radius: 8px;
-box-shadow: rgba(0, 0, 0, .3) 0 1px 2px 0, rgba(0, 0, 0, .15) 0 2px 6px 2px;
-/*transition: height .3s cubic-bezier(.25,.1,.25,1);*/
+	height: 160px;
+	width: 400px;
+	background: #292a2d;
+	border-radius: 8px;
+	box-shadow: rgba(0, 0, 0, .3) 0 1px 2px 0, rgba(0, 0, 0, .15) 0 2px 6px 2px;
+/*transition: height .3s cubic-bezier(.25,.1,.25,1);*/;
 }
 
 .item-main {
-display: flex;
-    flex: 1;
-    min-height: 0;
-    padding: 16px 20px;
-    height: 80px;
+	display: flex;
+	flex: 1;
+	min-height: 0;
+	padding: 16px 20px;
+	height: 80px;
 }
 
 .item-img-wrapper {
-    align-self: flex-start;
-    display: flex;
-    padding: 6px;
-    position: relative;
+	align-self: flex-start;
+	display: flex;
+	padding: 6px;
+	position: relative;
 }
 
 .item-img {
-height: 36px;
-width: 36px;
-border-radius: 6px;
-    background: #202124;
-    text-indent: -10000px;
+	height: 36px;
+	width: 36px;
+	border-radius: 6px;
+	background: #202124;
+	text-indent: -10000px;
 }
 
 .item-img-source {
-align-items: center;
-    background: #f1592b;
-    border-radius: 50%;
-    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 22%), 0 2px 2px 0 rgb(0 0 0 / 12%);
-    display: flex;
-    height: 22px;
-    justify-content: center;
-    width: 22px;
-    margin-inline-start: 24px;
-    margin-top: 24px;
-    position: absolute;
-display: none;
+	align-items: center;
+	background: #f1592b;
+	border-radius: 50%;
+	box-shadow: 0 1px 1px 0 rgb(0 0 0 / 22%), 0 2px 2px 0 rgb(0 0 0 / 12%);
+	display: flex;
+	height: 22px;
+	justify-content: center;
+	width: 22px;
+	margin-inline-start: 24px;
+	margin-top: 24px;
+	position: absolute;
+	display: none;
 }
 
 .item[managed] .item-img-source {
-display: flex;
+	display: flex;
 }
 
 .item-img-source-icon {
-pointer-events: none;
-    display: block;
-    height: 16px;
-    width: 16px;
-    color: white;
+	pointer-events: none;
+	display: block;
+	height: 16px;
+	width: 16px;
+	color: white;
 }
 
 .item-content {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    margin-inline-start: 24px;
-    width: 288px;
-    overflow: hidden;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	margin-inline-start: 24px;
+	width: 288px;
+	overflow: hidden;
 }
 
 .item-title-and-version {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
 }
 
 .item-title {
-margin-inline-end: 8px;
-color: rgb(232, 234, 237);
-white-space: nowrap;
-margin-bottom: 4px;
-    font-size: 13px;
-    margin-top: 2px;
-    text-overflow: ellipsis;
-    overflow: hidden;
+	margin-inline-end: 8px;
+	color: rgb(232, 234, 237);
+	white-space: nowrap;
+	margin-bottom: 4px;
+	font-size: 13px;
+	margin-top: 2px;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .item-version {
-    color: rgb(154, 160, 166);
-    font-size: 13px;
-    margin-bottom: 4px;
-display: none;
+	color: rgb(154, 160, 166);
+	font-size: 13px;
+	margin-bottom: 4px;
+	display: none;
 }
 
 .item-description-overflow {
-    height: 84px;
-    overflow: hidden;
+	height: 84px;
+	overflow: hidden;
 }
 
 .item-description {
-color: rgb(154, 160, 166);
-overflow: hidden;
-text-overflow: ellipsis;
-flex: 1;
-    font-size: 13px;
-    line-height: 20.02px;
-    margin-top: 3px;
+	color: rgb(154, 160, 166);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	flex: 1;
+	font-size: 13px;
+	line-height: 20.02px;
+	margin-top: 3px;
 }
 
 .item-id {
-    color: rgb(154, 160, 166);
-    font-size: 13px;
-    margin-top: 5px;
-display: none;
+	color: rgb(154, 160, 166);
+	font-size: 13px;
+	margin-top: 5px;
+	display: none;
 }
 
 .item-buttons {
-    height: 48px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 38px;
-    padding-bottom: 8px;
-    padding-top: 8px;
-    box-sizing: border-box;
+	height: 48px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-end;
+	padding-right: 38px;
+	padding-bottom: 8px;
+	padding-top: 8px;
+	box-sizing: border-box;
 }
 
 .item-left-buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex: 1;
-    flex-basis: 1e-9px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex: 1;
+	flex-basis: 1e-9px;
 }
 
 .item-left-button {
-border: 1px solid rgb(95, 99, 104);
-    align-items: center;
-    border-radius: 4px;
-    box-sizing: border-box;
-    color: rgb(138, 180, 248);
-    cursor: pointer;
-    display: inline-flex;
-    font-weight: 500;
-    height: 32px;
-    justify-content: center;
-    min-width: 5.14em;
-    overflow: hidden;
-    padding: 8px 16px;
-    user-select: none;
-    margin-inline-start: 8px;
-    font-size: 13px;
-    line-height: 20.02px;
+	border: 1px solid rgb(95, 99, 104);
+	align-items: center;
+	border-radius: 4px;
+	box-sizing: border-box;
+	color: rgb(138, 180, 248);
+	cursor: pointer;
+	display: inline-flex;
+	font-weight: 500;
+	height: 32px;
+	justify-content: center;
+	min-width: 5.14em;
+	overflow: hidden;
+	padding: 8px 16px;
+	user-select: none;
+	margin-inline-start: 8px;
+	font-size: 13px;
+	line-height: 20.02px;
 }
 
 .item-left-button:hover {
-background: rgba(138, 180, 248, 0.08);
+	background: rgba(138, 180, 248, 0.08);
 }
 
 .item-left-button:active {
-background: rgba(138, 180, 248, 0.25);
+	background: rgba(138, 180, 248, 0.25);
 }
 
 .item-toggle {
-    position: relative;
-    cursor: pointer;
+	position: relative;
+	cursor: pointer;
 }
 
 .item-toggle[unchecked] .item-bar {
-background: rgb(154, 160, 166);
-    opacity: 1;
+	background: rgb(154, 160, 166);
+	opacity: 1;
 }
 
 .item-toggle[unchecked] .item-knob {
-background: rgb(218, 220, 224);
-transform: initial;
+	background: rgb(218, 220, 224);
+	transform: initial;
 }
 
 .item-bar {
-    background: rgb(138, 180, 248);
-    border-radius: 8px;
-    height: 12px;
-    left: 3px;
-    position: absolute;
-    top: 2px;
-    transition: background-color linear 80ms;
-    width: 28px;
-    opacity: 0.5;
+	background: rgb(138, 180, 248);
+	border-radius: 8px;
+	height: 12px;
+	left: 3px;
+	position: absolute;
+	top: 2px;
+	transition: background-color linear 80ms;
+	width: 28px;
+	opacity: 0.5;
 }
 
 .item-knob {
-    background: rgb(138, 180, 248);
-    transform: translate3d(18px, 0, 0);
-    border-radius: 50%;
-    display: block;
-    height: 16px;
-    position: relative;
-    transition: transform linear 80ms, background-color linear 80ms;
-    width: 16px;
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 40%);
+	background: rgb(138, 180, 248);
+	transform: translate3d(18px, 0, 0);
+	border-radius: 50%;
+	display: block;
+	height: 16px;
+	position: relative;
+	transition: transform linear 80ms, background-color linear 80ms;
+	width: 16px;
+	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 40%);
 }
 
 .item-ripple {
-    color: rgb(218, 220, 224);
-    height: 40px;
-    left: 50%;
-    outline: none;
-    pointer-events: none;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    transition: color linear 80ms;
-    width: 40px;
+	color: rgb(218, 220, 224);
+	height: 40px;
+	left: 50%;
+	outline: none;
+	pointer-events: none;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	transition: color linear 80ms;
+	width: 40px;
 }
 
 .ripple {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    background-color: currentcolor;
-    left: 0;
-    opacity: 0.25;
-    pointer-events: none;
-    position: absolute;
-    will-change: height, transform, width;
-transform: scaleX(0) scaleY(0);
-transition: transform linear 80ms;
-
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	background-color: currentcolor;
+	left: 0;
+	opacity: 0.25;
+	pointer-events: none;
+	position: absolute;
+	will-change: height, transform, width;
+	transform: scaleX(0) scaleY(0);
+	transition: transform linear 80ms;
 }
 
 .ripple[open] {
-transform: initial;
+	transform: initial;
 }
 
 body[dev] .item {
-height: 208px;
+	height: 208px;
 }
 
 body[dev] .item-main {
-height: 125px;
+	height: 125px;
 }
 
 body[dev] .item-version, body[dev] .item-id {
-display: initial;
+	display: initial;
 }
 
-.patched {
-color: rgb(154, 160, 166);
-    font-size: 15.99px;
-    font-weight: 500;
-    margin-top: 80px;
-    text-align: center;
-display: none;
+.patched, .wrongpage {
+	color: rgb(154, 160, 166);
+	font-size: 15.99px;
+	font-weight: 500;
+	margin-top: 80px;
+	text-align: center;
+	display: none;
 }
 
-.items[patched] {
-grid-template-columns: initial;
+.items[patched], .items[wrongpage] {
+	grid-template-columns: initial;
 }
 
 .items[patched] .patched {
-display: initial;
+	display: initial;
+}
+
+.items[wrongpage] .wrongpage {
+	display: flow-root;
 }
 </style>
 </body>
@@ -630,9 +629,14 @@ items[item].querySelector(".item-main .item-img-wrapper .item-img").src = await 
 }
 }
 
+//Show wrong page popup
+if (!window.location.toString().startsWith("https://chrome.google.com/webstore")) {
+document.getElementById("items").setAttribute("wrongpage", "")
+} else {
 //Checks if it still works
 if (chrome.management) {
 getExtensions()
 } else {
 document.getElementById("items").setAttribute("patched", "")
+}
 }
