@@ -1,3 +1,6 @@
+# Patched!
+Ingot has been patched on Chrome 106 or after. This will not be updated.
+
 # Ingot
 A bookmarklet to disable extensions based on LTBEEF with an interface based on the chrome extension page
 
